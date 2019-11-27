@@ -1,37 +1,30 @@
 
-var dzisiaj = new Date(); //definiuje zmienną, która pobiera zbiór informacji
+const ONE_SECOND = 1000;
 
-var dzien = dzisiaj.getDate();
-var miesiac = dzisiaj.getMonth() + 1;
-var rok = dzisiaj.getFullYear();
+function getCurrentTime() {
+    // Definiuje zmienną, która pobiera zbiór informacji
+    const dzisiaj = new Date();
 
-var godzina = dzisiaj.getHours();
-var minuta = dzisiaj.getMinutes();
-var sekunda = dzisiaj.getSeconds();
+    const dzien = dzisiaj.getDate();
+    const miesiac = dzisiaj.getMonth() + 1;
+    const rok = dzisiaj.getFullYear();
 
-function odliczanie() {
-    var dzisiaj = new Date(); //definiuje zmienną, która pobiera zbiór informacji
+    const godzina = dzisiaj.getHours();
+    const minuta = dzisiaj.getMinutes();
+    const sekunda = dzisiaj.getSeconds();
 
-    var dzien = dzisiaj.getDate();
-    var miesiac = dzisiaj.getMonth() + 1;
-    var rok = dzisiaj.getFullYear();
+    return dzien + "/" + miesiac + "/" + rok + " " + godzina + ":" + minuta + ":" + sekunda;
+}
 
-    var godzina = dzisiaj.getHours();
-    var minuta = dzisiaj.getMinutes();
-    var sekunda = dzisiaj.getSeconds();
+function displayCurrentTime() {
+    const $clock = document.querySelector('#zegar');
+    $clock.textContent = getCurrentTime();
+}
 
-    // document.getElementById("zegar").innerHTML=
-    //      dzien + "/" + miesiac + "/" + rok + "|" + godzina + ":" + minuta + ":" + sekunda;
+function main() {
+    displayCurrentTime();
+    setInterval(displayCurrentTime, ONE_SECOND);
+}
 
-    var odswiezanie = document.getElementById('zegar');
-    odswiezanie.textContent = dzien + "/" + miesiac + "/" + rok + "|" + godzina + ":" + minuta + ":" + sekunda;
-
-    setTimeout("odliczanie()", 1000)
-
-};
-
-odliczanie();
-
-
-
+main();
 
